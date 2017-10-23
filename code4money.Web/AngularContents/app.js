@@ -1,0 +1,1 @@
+﻿var app = angular.module('code4moneyApp', ['ui.router', 'ngAnimate', 'ngMaterial']);
