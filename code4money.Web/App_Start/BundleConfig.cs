@@ -50,8 +50,36 @@ namespace code4money.Web
                 "~/Scripts/angular-ui-router.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/code4money").Include(
+                // general
+                "~/AngularContents/utilities.js",
                 "~/AngularContents/app.js",
-                "~/AngularContents/routeconfig.js"));
+                "~/AngularContents/routeconfig.js",
+                // views
+                "~/AngularContents/Views/Browse/BrowseController.js",
+                "~/AngularContents/Views/ImageView/ImageViewController.js",
+                "~/AngularContents/Views/Login/LoginController.js",
+                "~/AngularContents/Views/Manage/ManageController.js",
+                "~/AngularContents/Views/Register/RegisterController.js",
+                // modules
+                "~/AngularContents/Modules/Test/TestController.js",
+                "~/AngularContents/Modules/Test/TestDirective.js",
+                "~/AngularContents/Modules/Home/HomeController.js"
+                ));
+
+            bundles.Add(new StyleBundle("~/bundles/code4moneyCss").Include(
+                "~/Content/Site.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/bundles/angularMaterialCSS").Include(
+                "~/Content/angular-material.min.css",
+                "~/Content/angular-material.layouts.min.css",
+                "~/Content/angular-material.layout-attributes.min.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/bundles/bootstrapCSS").Include(
+                "~/Content/bootstrap-theme.min.css",
+                "~/Content/bootstrap.min.css"
+                ));
 
             ScriptManager.ScriptResourceMapping.AddDefinition(
                 "respond",

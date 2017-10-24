@@ -151,7 +151,18 @@
     <Content Include="AngularContents\Modules\Test\Test.html" />
     <Content Include="AngularContents\Modules\Test\TestController.js" />
     <Content Include="AngularContents\Modules\Test\TestDirective.js" />
+    <Content Include="AngularContents\Views\Browse\Browse.html" />
+    <Content Include="AngularContents\Views\Browse\BrowseController.js" />
+    <Content Include="AngularContents\Views\ImageView\ImageView.html" />
+    <Content Include="AngularContents\Views\ImageView\ImageViewController.js" />
+    <Content Include="AngularContents\Views\Login\Login.html" />
+    <Content Include="AngularContents\Views\Login\LoginController.js" />
+    <Content Include="AngularContents\Views\Manage\Manage.html" />
+    <Content Include="AngularContents\Views\Manage\ManageController.js" />
+    <Content Include="AngularContents\Views\Register\Register.html" />
+    <Content Include="AngularContents\Views\Register\RegisterController.js" />
     <Content Include="AngularContents\routeconfig.js" />
+    <Content Include="AngularContents\utilities.js" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\angular-material.css" />
     <Content Include="Content\angular-material.layout-attributes.css" />
@@ -291,6 +302,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
