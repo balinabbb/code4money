@@ -48,6 +48,12 @@
 
     }());
 
+    $scope.InputEvent = function (keyEvent, func) {
+        if (keyEvent.which === 13) {
+            func();
+        }
+    };
+
     $scope.LoginUser = function (user, callback) {
         $http({
             method: 'POST',

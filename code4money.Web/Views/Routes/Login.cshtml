@@ -15,13 +15,15 @@
             <div class="shadow-box mb10">
                 <div class="mb10">
                     <input type="text" name="username" class="form-control" placeholder="Username..." 
-                           ng-model="wrap.user.username" />
+                           ng-model="wrap.user.username"
+                           ng-keypress="InputEvent($event, wrap.LoginUser)" />
                     <p class="help-block"
                        ng-show="LoginForm.username.$error.isEmpty">Üres mező!</p>
                 </div>
                 <div>
                     <input type="password" name="password" class="form-control" placeholder="Password..." 
-                           ng-model="wrap.user.password" />
+                           ng-model="wrap.user.password"
+                           ng-keypress="InputEvent($event, wrap.LoginUser)" />
                     <p class="help-block"
                        ng-show="LoginForm.password.$error.isEmpty">Üres mező!</p>
                 </div>
