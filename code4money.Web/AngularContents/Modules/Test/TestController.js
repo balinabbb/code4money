@@ -1,18 +1,28 @@
-﻿app.controller('TestController', ['$scope', '$http', '$state',
-    function ($scope, $http, $state) {
+﻿app.controller('TestController', ['$scope', '$http', function ($scope, $http) {
 
-        $scope.htmls = {
-            var1: null,
-            var2: null
-        };
+    $scope.GetTestData = function () {
+        console.log("GetTestData");
+        $http({
+            method: 'GET',
+            url: '/Test/MyGetMethod?counter=4'
+        }).then(function successCallback(response) {
+            console.log(response.data);
+        }, function errorCallback(response) {
+            console.error(response.data);
+        });
+    };
 
-        $scope.Init = function () {
-            console.log("scope Init");
+    $scope.PostTestData = function () {
+        console.log("PostTestData");
+        $http({
+            method: 'POST',
+            url: '/Test/MyPostMethod',
+            data: { id: 1 }
+        }).then(function successCallback(response) {
+            console.log(response.data);
+        }, function errorCallback(response) {
+            console.error(response.data);
+        });
+    };
 
-            console.log($scope.testVar);
-
-            $scope.htmls.var1 = "Hello.";
-            $scope.htmls.var2 = "Is it me you're looking for?";
-        };
-
-    }]);
+}]);

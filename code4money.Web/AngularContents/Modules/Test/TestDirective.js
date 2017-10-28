@@ -1,10 +1,9 @@
-﻿app.directive('myTest', function ($http) {
+﻿app.directive('testElement', function () {
     return {
-        restrict: 'E',
-        templateUrl: '/AngularContents/Modules/Test/Test.html',
+        templateUrl: 'AngularContents/Modules/Test/Test.html',
         controller: 'TestController',
         scope: {
-            testVar: '='
+            testVar: "="
         }
     };
 });

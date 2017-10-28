@@ -1,1 +1,1 @@
-﻿var app = angular.module('code4moneyApp', ['ui.router', 'ngAnimate', 'ngMaterial']);
+﻿var app = angular.module('code4money', ["ngRoute"]);

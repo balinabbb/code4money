@@ -1,74 +1,28 @@
-﻿var isAppLoaded = false;
+﻿app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
 
-app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", 
-    function ($stateProvider, $urlRouterProvider, $locationProvider) {
-
-        //$urlRouterProvider.otherwise("/Home");
-        //$locationProvider.html5Mode(false);
-        //$locationProvider.hashPrefix('!');
-
-        $stateProvider.state('root', {
-            abstract: true,
-            template: '<div ui-view=""></div>'/*,
-            resolve: {
-                localizationStrings: ['GlobalService',
-                    function (GlobalService) {
-                        if (isAppLoaded === false) {
-                            isAppLoaded = true;
-                            return null;
-                        }
-                    }
-                ]
-            }*/
-        }).state("home", {
-            url: '/Home',
-            templateProvider: ["$templateFactory", function ($templateFactory) {
-                return $templateFactory.fromUrl('/AngularContents/Modules/Home/home.html');
-            }],
-            controller: 'HomeController',
-            parent: 'root'
-        }).state("login", {
-            url: '/Login',
-            templateProvider: ["$templateFactory", function ($templateFactory) {
-                return $templateFactory.fromUrl('/AngularContents/Views/Login/Login.html');
-            }],
-            controller: 'LoginController',
-            parent: 'root'
-        }).state("register", {
-            url: '/Register',
-            templateProvider: ["$templateFactory", function ($templateFactory) {
-                return $templateFactory.fromUrl('/AngularContents/Views/Register/Register.html');
-            }],
-            controller: 'RegisterController',
-            parent: 'root'
-        }).state("manage", {
-            url: '/Manage',
-            templateProvider: ["$templateFactory", function ($templateFactory) {
-                return $templateFactory.fromUrl('/AngularContents/Views/Manage/Manage.html');
-            }],
-            controller: 'ManageController',
-            parent: 'root'
-        }).state("browse", {
-            url: '/Browse',
-            templateProvider: ["$templateFactory", function ($templateFactory) {
-                return $templateFactory.fromUrl('/AngularContents/Views/Browse/Browse.html');
-            }],
-            controller: 'BrowseController',
-            parent: 'root'
-        }).state("imageview", {
-            url: '/ImageView/:imageId',
-            templateProvider: ["$templateFactory", function ($templateFactory) {
-                return $templateFactory.fromUrl('/AngularContents/Views/ImageView/ImageView.html');
-            }],
-            controller: 'ImageViewController',
-            parent: 'root'
-        }).state("test", {
-            url: '/test',
-            templateProvider: ["$templateFactory", function ($templateFactory) {
-                return $templateFactory.fromUrl('/AngularContents/Modules/Test/test.html');
-            }],
-            controller: 'TestController',
-            parent: 'root'
+    $routeProvider
+        .when('/Login', {
+            templateUrl: '/Routes/Login',
+            controller: 'LoginController'
+        })
+        .when('/Register', {
+            templateUrl: '/Routes/Register',
+            controller: 'RegisterController'
+        })
+        .when('/Manage', {
+            templateUrl: '/Routes/Manage',
+            controller: 'ManageController'
+        })
+        .when('/Browse', {
+            templateUrl: '/Routes/Browse',
+            controller: 'BrowseController'
+        })
+        .when('/ImageView/:taxomony', {
+            templateUrl: function (params) {
+                return '/Routes/ImageView?taxomony=' + params.taxomony;
+            },
+            controller: 'ImageViewController'
         });
-    }
-]);
+
+    $locationProvider.hashPrefix('');
+}]);
