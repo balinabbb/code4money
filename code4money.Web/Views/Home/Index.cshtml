@@ -1,44 +1,54 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/code4money")
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/angular")
+        @Scripts.Render("~/bundles/code4money")
+    </head>
+    <body id="mainApp" 
+          ng-app="code4money" 
+          ng-controller="HomeController"
+          ng-init="wrap.Init()">
+        <div class="main-content">
 
-</head>
-<body id="mainApp" ng-app="code4money">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <a class="navbar-brand" href="#">
+                    <span class="c4mlogo">
+                        <font class="rm">&lt;</font><font class="dm">$</font><font class="rm">&gt;</font>
+                    </span>
+                </a>
+                <div class="collapse navbar-collapse mr20" id="navbarTogglerDemo02">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-if="wrap.pageBits.login"><a href="#/Login">Login</a></li>
+                        @*<li><a href="#/Register">Register</a></li>*@
+                        <li ng-if="wrap.pageBits.manage"><a href="#/Manage">Manage</a></li>
+                        <li ng-if="wrap.pageBits.browse"><a href="#/Browse">Browse</a></li>
+                        @*<li><a href="#/ImageView/6">ImageView</a></li>*@
+                        <li ng-if="wrap.pageBits.logout" 
+                            ng-click="wrap.Logout()"><a href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container body-content">
+                <div ng-view></div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#/Login">Login</a></li>
-                    <li><a href="#/Register">Register</a></li>
-                    <li><a href="#/Manage">Manage</a></li>
-                    <li><a href="#/Browse">Browse</a></li>
-                    <li><a href="#/ImageView/6">ImageView</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        <div ng-controller="HomeController">
 
-            <div ng-view></div>
-
+            <footer class="footer">
+                <p>&copy; @DateTime.Now.Year - Óbudai Egyetem, NIK / Code4Money csapat</p>
+            </footer>
         </div>
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-</body>
+    </body>
 </html>

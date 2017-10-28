@@ -13,6 +13,10 @@ namespace code4money.Web
                 "~/Content/bootstrap-theme.min.css",
                 "~/Content/Site.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                "~/Scripts/jquery-1.9.1.min.js",
+                "~/Scripts/bootstrap.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.min.js",
                 "~/Scripts/angular-route.min.js",

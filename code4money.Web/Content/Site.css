@@ -1,6 +1,10 @@
-﻿body {
+﻿html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    position:relative;
     padding-top: 50px;
-    padding-bottom: 20px;
     background: #e2e2e2;
 }
 
@@ -259,6 +263,28 @@ a.active-white:active, a.visited-white:visited { color:#fff; text-decoration:non
 
 
 /**
+ * Main containers
+ */
+.main-content {
+    padding-bottom: 90px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+    footer p {
+        padding: 15px;
+        margin: 0;
+        color: #777;
+        text-align: right;
+        font-size: 13px;
+    }
+
+
+/**
  * Elements
  */
 .tmpFacebookBtn {
@@ -266,6 +292,22 @@ a.active-white:active, a.visited-white:visited { color:#fff; text-decoration:non
     color: #fff;
     background: #4267b2;
 }
+.c4mlogo{
+    font-family:'Courier New';
+}
+    .c4mlogo span {
+        display: inline-block;
+        padding: 0 2px;
+    }
+    .c4mlogo font {
+        transition: all 0.3s ease-in-out;
+    }
+        .c4mlogo font.rm {
+            color: #666;
+        }
+        .c4mlogo font.dm {
+            color: #73c378;
+        }
 .s-body{
     border-bottom:2px solid #ccc;
 }
@@ -305,4 +347,36 @@ a.active-white:active, a.visited-white:visited { color:#fff; text-decoration:non
 #mainApp .help-block {
     color: #D46162;
     margin-bottom: 5px;
+}
+#mainApp .navbar-inverse,
+footer{
+    background:#323232;
+}
+#mainApp .navbar-brand {
+    transition: all 0.25s ease-in-out;
+    border-right: 1px solid #444;
+}
+    #mainApp .navbar-brand:hover {
+        background: #444;
+    }
+        #mainApp .navbar-brand:hover span font.rm {
+            /*color: #999;*/
+        }
+        #mainApp .navbar-brand:hover span font.dm {
+            color: #b8f8bc;
+        }
+
+/**
+ * Media
+ */
+@media screen and (max-width: 768px) {
+    #mainApp .navbar-header {
+        float: right;
+    }
+    #mainApp .nav > li{
+        margin-top: -4px;
+    }
+    #mainApp .navbar-brand {
+        border-right: 0;
+    }
 }

@@ -41,9 +41,7 @@
             else
                 $scope.LoginForm.password.$error.isEmpty = false;
 
-            console.log($scope.LoginForm);
-
-            return false;
+            return ($scope.LoginForm.$valid && !$scope.LoginForm.$invalid);
         }
 
         return pub;

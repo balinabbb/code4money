@@ -22,6 +22,9 @@
                 return '/Routes/ImageView?taxomony=' + params.taxomony;
             },
             controller: 'ImageViewController'
+        }).otherwise('/Login', {
+            templateUrl: '/Routes/Login',
+            controller: 'LoginController'
         });
 
     $locationProvider.hashPrefix('');
