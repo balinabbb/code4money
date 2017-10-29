@@ -4,7 +4,7 @@
 
         var pub = {
             user: {
-                username: null,
+                email: null,
                 password: null
             }
         };
@@ -18,9 +18,7 @@
             if (!IsFormValid()) 
                 return;
 
-            $scope.LoginForm.username.$error.empty = false;
-
-            $scope.LoginUser($scope.wrap.user, function (response) {
+            LoginUser($scope.wrap.user, function (response) {
                 if (response.data === true)
                     location.href = "#/Browse";
                 else
@@ -30,17 +28,20 @@
         };
 
         function IsFormValid() {
-            if (!$scope.wrap.user.username)
-                $scope.LoginForm.username.$error.isEmpty = true;
-            else
-                $scope.LoginForm.username.$error.isEmpty = false;
+            $scope.LoginForm.$valid = true;
 
+            if (!$scope.wrap.user.email) {
+                $scope.LoginForm.email.$error.isEmpty = true;
+                $scope.LoginForm.$valid = false;
+            } else
+                $scope.LoginForm.email.$error.isEmpty = false;
 
-            if (!$scope.wrap.user.password)
+            if (!$scope.wrap.user.password) {
                 $scope.LoginForm.password.$error.isEmpty = true;
-            else
+                $scope.LoginForm.$valid = false;
+            } else
                 $scope.LoginForm.password.$error.isEmpty = false;
-
+            
             return ($scope.LoginForm.$valid && !$scope.LoginForm.$invalid);
         }
 
@@ -54,10 +55,10 @@
         }
     };
 
-    $scope.LoginUser = function (user, callback) {
+    function LoginUser (user, callback) {
         $http({
             method: 'POST',
-            url: '/Login/LoginUser',
+            url: '/Account/LoginUser',
             data: user
         }).then(function successCallback(response) {
             callback(response);

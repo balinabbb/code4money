@@ -14,14 +14,14 @@
              ng-form="LoginForm">
             <div class="shadow-box mb10">
                 <div class="mb10">
-                    <input type="text" name="username" class="form-control" placeholder="Username..." 
-                           ng-model="wrap.user.username"
+                    <input type="text" name="email" class="form-control" placeholder="E-mail..."
+                           ng-model="wrap.user.email"
                            ng-keypress="InputEvent($event, wrap.LoginUser)" />
                     <p class="help-block"
-                       ng-show="LoginForm.username.$error.isEmpty">Üres mező!</p>
+                       ng-show="LoginForm.email.$error.isEmpty">Üres mező!</p>
                 </div>
                 <div>
-                    <input type="password" name="password" class="form-control" placeholder="Password..." 
+                    <input type="password" name="password" class="form-control" placeholder="Password..."
                            ng-model="wrap.user.password"
                            ng-keypress="InputEvent($event, wrap.LoginUser)" />
                     <p class="help-block"

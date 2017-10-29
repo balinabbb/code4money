@@ -7,15 +7,21 @@ using System.Web.Mvc;
 
 namespace code4money.Web.Controllers
 {
-    public class LoginController: Controller
+    public class AccountController: Controller
     {
         [HttpPost]
         public ActionResult LoginUser(SimpleUserVM user)
         {
-            if (user.username == "admin" && user.password == "admin")
+            if (user.email == "admin" && user.password == "admin")
                 return Json(true);
             else
                 return Json(false);
+        }
+
+        [HttpPost]
+        public ActionResult RegisterUser(SimpleUserVM user)
+        {
+            return Json(true);
         }
     }
 }

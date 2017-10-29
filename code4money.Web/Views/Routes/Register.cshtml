@@ -1,1 +1,40 @@
-﻿<p>register</p>
+﻿<div ng-init="wrap.Init()">
+
+    <div class="wmax300 mauto pt60">
+        <div class="s-head text-center">
+            <h2 class="pb10">Registration</h2>
+        </div>
+        <div class="s-body pb10 mb5"
+             ng-form="RegisterForm">
+            <div class="shadow-box mb10">
+                <div class="mb10">
+                    <input type="text" name="email" class="form-control" placeholder="E-mail..."
+                           ng-model="wrap.user.email" />
+                    <p class="help-block"
+                       ng-show="RegisterForm.email.$error.isEmpty">Üres mező!</p>
+                </div>
+                <div class="mb10">
+                    <input type="password" name="password" class="form-control" placeholder="Password..."
+                           ng-model="wrap.user.password" />
+                    <p class="help-block"
+                       ng-show="RegisterForm.password.$error.isEmpty">Üres mező!</p>
+                </div>
+                <div>
+                    <input type="password" name="repassword" class="form-control" placeholder="Password again..."
+                           ng-model="wrap.user.repassword" />
+                    <p class="help-block"
+                       ng-show="RegisterForm.repassword.$error.isEmpty">Üres mező!</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <div class="btnbox green"
+                     ng-click="wrap.RegisterUser()"><span>Register</span></div>
+            </div>
+        </div>
+        <p class="text-right">
+            <a href="#/Login" target="_self" title="Register">Back</a>
+        </p>
+
+    </div>
+
+</div>

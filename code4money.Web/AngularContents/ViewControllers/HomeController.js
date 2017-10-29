@@ -19,7 +19,7 @@
         pub.ShowHideMenus = function (routeName) {
             switch (routeName) {
                 case "Login":
-                    this.pageBits.login = true;
+                    this.pageBits.login = false;
                     this.pageBits.manage = false;
                     this.pageBits.browse = false;
                     this.pageBits.logout = false;

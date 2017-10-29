@@ -292,8 +292,10 @@ footer {
     color: #fff;
     background: #4267b2;
 }
-.c4mlogo{
-    font-family:'Courier New';
+.c4mlogo {
+    font-family: 'Courier New';
+    font-size: 22px;
+    font-weight: bold;
 }
     .c4mlogo span {
         display: inline-block;
@@ -330,6 +332,13 @@ footer {
         .btnbox.gray:hover {
             background: #444;
         }
+    .btnbox.green {
+        background: #73c378;
+        color: #fff;
+    }
+        .btnbox.green:hover {
+            background: #568f59;
+        }
 
 /**
  * Overwrites
@@ -352,9 +361,18 @@ footer {
 footer{
     background:#323232;
 }
+#mainApp .navbar{
+    /*min-height:40px;*/
+}
+#mainApp .navbar-nav > li > a {
+    /*padding: 10px;*/
+}
 #mainApp .navbar-brand {
     transition: all 0.25s ease-in-out;
     border-right: 1px solid #444;
+    padding:15px 10px;
+    /*height: 40px;
+    padding: 10px;*/
 }
     #mainApp .navbar-brand:hover {
         background: #444;
