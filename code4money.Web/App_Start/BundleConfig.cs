@@ -11,16 +11,24 @@ namespace code4money.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.min.css",
                 "~/Content/bootstrap-theme.min.css",
-                "~/Content/Site.css"));
+                "~/Content/Site.css"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/jquery-1.9.1.min.js",
-                "~/Scripts/bootstrap.min.js"));
+                "~/Scripts/bootstrap.min.js"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.min.js",
                 "~/Scripts/angular-route.min.js",
-                "~/Scripts/angular-mocks.js"));
+                "~/Scripts/angular-mocks.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/masonry").Include(
+                "~/Scripts/imagesloaded.pknd.min.js",
+                "~/Scripts/masonry.pkgd.min.js"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/code4money").Include(
                 // general

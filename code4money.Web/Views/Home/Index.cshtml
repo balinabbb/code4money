@@ -4,15 +4,19 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Code4Money</title>
+
         @Styles.Render("~/Content/css")
+
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/bundles/angular")
+        @Scripts.Render("~/bundles/masonry")
         @Scripts.Render("~/bundles/code4money")
     </head>
     <body id="mainApp" 
           ng-app="code4money" 
           ng-controller="HomeController"
           ng-init="wrap.Init()">
+
         <div class="main-content">
 
             <nav class="navbar navbar-inverse navbar-fixed-top">
