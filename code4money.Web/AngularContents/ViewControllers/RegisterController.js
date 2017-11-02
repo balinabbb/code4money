@@ -65,6 +65,6 @@
         }, function errorCallback(response) {
             console.error(response.data);
         });
-    };
+    }
 
 }]);

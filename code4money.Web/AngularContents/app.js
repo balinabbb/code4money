@@ -1,1 +1,1 @@
-﻿var app = angular.module('code4money', ['ngRoute']);
+﻿var app = angular.module('code4money', ['ngRoute', 'angularFileUpload']);

@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoutesController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -199,7 +200,9 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SimpleImageVM.cs" />
     <Compile Include="Models\SimpleUserVM.cs" />
+    <Compile Include="Models\UserPostData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -229,6 +232,25 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\logo.png" />
+    <Content Include="Scripts\angular-file-upload\.gitignore" />
+    <Content Include="Scripts\angular-file-upload\dist\angular-file-upload.js" />
+    <Content Include="Scripts\angular-file-upload\dist\angular-file-upload.min.js" />
+    <Content Include="Scripts\angular-file-upload\gulpfile.js" />
+    <Content Include="Scripts\angular-file-upload\license.txt" />
+    <Content Include="Scripts\angular-file-upload\src\directives\FileDrop.js" />
+    <Content Include="Scripts\angular-file-upload\src\directives\FileOver.js" />
+    <Content Include="Scripts\angular-file-upload\src\directives\FileSelect.js" />
+    <Content Include="Scripts\angular-file-upload\src\index.js" />
+    <Content Include="Scripts\angular-file-upload\src\services\FileDirective.js" />
+    <Content Include="Scripts\angular-file-upload\src\services\FileDrop.js" />
+    <Content Include="Scripts\angular-file-upload\src\services\FileItem.js" />
+    <Content Include="Scripts\angular-file-upload\src\services\FileLikeObject.js" />
+    <Content Include="Scripts\angular-file-upload\src\services\FileOver.js" />
+    <Content Include="Scripts\angular-file-upload\src\services\FileSelect.js" />
+    <Content Include="Scripts\angular-file-upload\src\services\FileUploader.js" />
+    <Content Include="Scripts\angular-file-upload\src\services\Pipeline.js" />
+    <Content Include="Scripts\angular-file-upload\src\values\options.js" />
+    <Content Include="Scripts\angular-file-upload\WebpackConfig.js" />
     <Content Include="Scripts\imagesloaded.pknd.min.js" />
     <Content Include="Scripts\masonry.pkgd.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
@@ -244,6 +266,15 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Scripts\angular-file-upload\.babelrc" />
+    <Content Include="Scripts\angular-file-upload\.jshintrc" />
+    <Content Include="Scripts\angular-file-upload\bower.json" />
+    <Content Include="Scripts\angular-file-upload\CONTRIBUTING.md" />
+    <Content Include="Scripts\angular-file-upload\dist\angular-file-upload.js.map" />
+    <Content Include="Scripts\angular-file-upload\dist\angular-file-upload.min.js.map" />
+    <Content Include="Scripts\angular-file-upload\package.json" />
+    <Content Include="Scripts\angular-file-upload\README.md" />
+    <Content Include="Scripts\angular-file-upload\src\config.json" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -253,6 +284,10 @@
     <Content Include="Uploads\002.jpg" />
     <Content Include="Uploads\003.jpg" />
     <Content Include="Uploads\004.jpg" />
+    <Content Include="Uploads\005.jpg" />
+    <Content Include="Uploads\006.jpg" />
+    <Content Include="Uploads\007.jpg" />
+    <Content Include="Uploads\008.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

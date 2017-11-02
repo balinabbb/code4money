@@ -49,7 +49,6 @@
                     this.pageBits.logout = true;
                     break;
                 default:
-                    console.error("Not a valid route name! " + routeName);
             }
         };
 

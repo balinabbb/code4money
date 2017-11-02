@@ -30,6 +30,10 @@ namespace code4money.Web
                 "~/Scripts/masonry.pkgd.min.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular-file-upload").Include(
+                "~/Scripts/angular-file-upload/dist/angular-file-upload.min.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/code4money").Include(
                 // general
                 "~/AngularContents/utilities.js",
