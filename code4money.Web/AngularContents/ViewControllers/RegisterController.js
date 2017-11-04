@@ -1,4 +1,4 @@
-﻿app.controller('RegisterController', ['$scope', '$http', function ($scope, $http) {
+﻿app.controller('RegisterController', ['$scope', '$http', '$localStorage', function ($scope, $http, $localStorage) {
 
     $scope.wrap = (function () {
 

@@ -1,8 +1,12 @@
-﻿app.controller('BrowseController', ['$scope', '$http', function ($scope, $http) {
+﻿app.controller('BrowseController', ['$scope', '$http', '$localStorage', function ($scope, $http, $localStorage) {
 
     $scope.wrap = (function () {
 
         var pub = {};
+
+        pub.Init = function () {
+            CheckUserSession($localStorage.user);
+        };
 
         return pub;
 

@@ -1,6 +1,6 @@
-﻿app.controller('HomeController', ['$scope', function ($scope) {
-
-    $scope.wrap = (function () {
+﻿app.controller('HomeController', ['$scope', '$localStorage', function ($scope, $localStorage) {
+    
+    $scope.homeWrap = (function () {
 
         var pub = {
             currentRoute: null,
@@ -12,61 +12,68 @@
             }
         };
 
+        var _this;
+
         pub.Init = function () {
             //this.SetRouteProgram(GetRouteFromUrl(window.location.href));
-        };
-
-        pub.ShowHideMenus = function (routeName) {
-            switch (routeName) {
-                case "Login":
-                    this.pageBits.login = false;
-                    this.pageBits.manage = false;
-                    this.pageBits.browse = false;
-                    this.pageBits.logout = false;
-                    break;
-                case "Register":
-                    this.pageBits.login = true;
-                    this.pageBits.manage = false;
-                    this.pageBits.browse = false;
-                    this.pageBits.logout = false;
-                    break;
-                case "Manage":
-                    this.pageBits.login = false;
-                    this.pageBits.manage = true;
-                    this.pageBits.browse = true;
-                    this.pageBits.logout = true;
-                    break;
-                case "Browse":
-                    this.pageBits.login = false;
-                    this.pageBits.manage = true;
-                    this.pageBits.browse = true;
-                    this.pageBits.logout = true;
-                    break;
-                case "ImageView":
-                    this.pageBits.login = false;
-                    this.pageBits.manage = true;
-                    this.pageBits.browse = true;
-                    this.pageBits.logout = true;
-                    break;
-                default:
-            }
+            _this = this;
         };
 
         pub.SetRouteProgram = function (url) {
-            $scope.wrap.currentRoute = GetRouteFromUrl(url);
-            $scope.wrap.ShowHideMenus(GetRouteFromUrl(url));
+            $scope.homeWrap.currentRoute = GetRouteFromUrl(url);
+            ShowHideMenus(GetRouteFromUrl(url));
         };
 
         pub.Logout = function () {
+            $localStorage.$reset();
             location.href = "#/Login";
         };
+
+        function ShowHideMenus(routeName) {
+            if (!_this) {
+                console.error("Init failure");
+                return;
+            }
+            switch (routeName) {
+                case "Login":
+                    _this.pageBits.login = false;
+                    _this.pageBits.manage = false;
+                    _this.pageBits.browse = false;
+                    _this.pageBits.logout = false;
+                    break;
+                case "Register":
+                    _this.pageBits.login = true;
+                    _this.pageBits.manage = false;
+                    _this.pageBits.browse = false;
+                    _this.pageBits.logout = false;
+                    break;
+                case "Manage":
+                    _this.pageBits.login = false;
+                    _this.pageBits.manage = false;
+                    _this.pageBits.browse = true;
+                    _this.pageBits.logout = true;
+                    break;
+                case "Browse":
+                    _this.pageBits.login = false;
+                    _this.pageBits.manage = true;
+                    _this.pageBits.browse = false;
+                    _this.pageBits.logout = true;
+                    break;
+                case "ImageView":
+                    _this.pageBits.login = false;
+                    _this.pageBits.manage = true;
+                    _this.pageBits.browse = true;
+                    _this.pageBits.logout = true;
+                    break;
+                default:
+            }
+        }
 
         return pub;
 
     }());
 
     function GetRouteFromUrl(url) {
-        console.log(url);
         var urlParts = url.split("/");
         var i = 0;
         while (i < urlParts.length && urlParts[i] !== "#")
@@ -77,11 +84,16 @@
         return null;
     }
 
+    // Url changed event
     $scope.$on('$locationChangeStart', function (event, to, from) {
         if (!event || !to || !from)
             return;
 
-        $scope.wrap.SetRouteProgram(to);
+        $scope.homeWrap.SetRouteProgram(to);
+    });
+
+    $scope.$watch('$localStorage', function (a, b, c) {
+        console.log($localStorage);
     });
 
 }]);

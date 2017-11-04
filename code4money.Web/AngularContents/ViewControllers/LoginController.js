@@ -1,4 +1,4 @@
-﻿app.controller('LoginController', ['$scope', '$http', function ($scope, $http) {
+﻿app.controller('LoginController', ['$scope', '$http', '$localStorage', function ($scope, $http, $localStorage) {
 
     $scope.wrap = (function () {
 
@@ -19,9 +19,10 @@
                 return;
 
             LoginUser($scope.wrap.user, function (response) {
-                if (response.data === true)
+                if (response.data) {
+                    $localStorage.user = new User(response.data.id, response.data.email);
                     location.href = "#/Browse";
-                else
+                } else
                     console.error("Hibás felhasználónév vagy jelszó!");
             });
 

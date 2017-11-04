@@ -10,13 +10,13 @@
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/bundles/angular")
         @Scripts.Render("~/bundles/masonry")
-        @Scripts.Render("~/bundles/angular-file-upload")
+        @Scripts.Render("~/bundles/angularModules")
         @Scripts.Render("~/bundles/code4money")
     </head>
     <body id="mainApp" 
           ng-app="code4money" 
           ng-controller="HomeController"
-          ng-init="wrap.Init()">
+          ng-init="homeWrap.Init()">
 
         <div class="main-content">
 
@@ -36,13 +36,13 @@
                 </a>
                 <div class="collapse navbar-collapse mr20" id="navbarTogglerDemo02">
                     <ul class="nav navbar-nav navbar-right">
-                        <li ng-if="wrap.pageBits.login"><a href="#/Login">Login</a></li>
+                        <li ng-if="homeWrap.pageBits.login"><a href="#/Login">Login</a></li>
                         @*<li><a href="#/Register">Register</a></li>*@
-                        <li ng-if="wrap.pageBits.manage"><a href="#/Manage">Manage</a></li>
-                        <li ng-if="wrap.pageBits.browse"><a href="#/Browse">Browse</a></li>
+                        <li ng-if="homeWrap.pageBits.manage"><a href="#/Manage">Manage</a></li>
+                        <li ng-if="homeWrap.pageBits.browse"><a href="#/Browse">Browse</a></li>
                         @*<li><a href="#/ImageView/6">ImageView</a></li>*@
-                        <li ng-if="wrap.pageBits.logout" 
-                            ng-click="wrap.Logout()"><a href="#">Logout</a></li>
+                        <li ng-if="homeWrap.pageBits.logout" 
+                            ng-click="homeWrap.Logout()"><a href="#">Logout</a></li>
                     </ul>
                 </div>
             </nav>

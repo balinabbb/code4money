@@ -280,6 +280,13 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\ngStorage\.gitattributes" />
+    <Content Include="Scripts\ngStorage\.gitignore" />
+    <Content Include="Scripts\ngStorage\Gruntfile.js" />
+    <Content Include="Scripts\ngStorage\ngStorage.js" />
+    <Content Include="Scripts\ngStorage\ngStorage.min.js" />
+    <Content Include="Scripts\ngStorage\package.js" />
+    <Content Include="Scripts\ngStorage\test\spec.js" />
     <Content Include="Uploads\001.jpg" />
     <Content Include="Uploads\002.jpg" />
     <Content Include="Uploads\003.jpg" />
@@ -297,6 +304,15 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\ngStorage\.bowerrc" />
+    <Content Include="Scripts\ngStorage\.editorconfig" />
+    <Content Include="Scripts\ngStorage\.npmignore" />
+    <Content Include="Scripts\ngStorage\.travis.yml" />
+    <Content Include="Scripts\ngStorage\bower.json" />
+    <Content Include="Scripts\ngStorage\CHANGELOG.md" />
+    <Content Include="Scripts\ngStorage\LICENSE" />
+    <Content Include="Scripts\ngStorage\package.json" />
+    <Content Include="Scripts\ngStorage\README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

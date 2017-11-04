@@ -13,7 +13,15 @@ namespace code4money.Web.Controllers
         public ActionResult LoginUser(SimpleUserVM user)
         {
             if (user.email == "admin" && user.password == "admin")
-                return Json(true);
+            {
+                user.id = 1;
+                return Json(user);
+            }
+            else if (user.email == "asd" && user.password == "asd")
+            {
+                user.id = 2;
+                return Json(user);
+            }
             else
                 return Json(false);
         }

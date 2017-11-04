@@ -1,4 +1,4 @@
-﻿app.controller('ManageController', ['$scope', '$http', 'FileUploader', function ($scope, $http, FileUploader) {
+﻿app.controller('ManageController', ['$scope', '$http', 'FileUploader', '$localStorage', function ($scope, $http, FileUploader, $localStorage) {
 
     // TODO after upload (response success), wait 5 sec then remove file from queue and add to uploaded image
     
@@ -16,6 +16,8 @@
 
         // Public methods
         pub.Init = function () {
+
+            CheckUserSession($localStorage.user);
 
             _this = this;
 

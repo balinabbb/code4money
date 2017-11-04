@@ -25,14 +25,15 @@ namespace code4money.Web
                 "~/Scripts/angular-mocks.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/bundles/angularModules").Include(
+                "~/Scripts/angular-file-upload/dist/angular-file-upload.min.js",
+                "~/Scripts/ngStorage/ngStorage.min.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/masonry").Include(
                 "~/Scripts/imagesloaded.pknd.min.js",
                 "~/Scripts/masonry.pkgd.min.js"
-                ));
-
-            bundles.Add(new ScriptBundle("~/bundles/angular-file-upload").Include(
-                "~/Scripts/angular-file-upload/dist/angular-file-upload.min.js"
-                ));
+                ));            
 
             bundles.Add(new ScriptBundle("~/bundles/code4money").Include(
                 // general
