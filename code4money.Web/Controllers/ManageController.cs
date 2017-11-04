@@ -19,9 +19,14 @@ namespace code4money.Web.Controllers
         public ActionResult GetImageList(int userId)
         {
             return Json(new List<SimpleImageVM>() {
-                new SimpleImageVM() { id = 1, name = "t1.jpg", type = "image/jpeg", size = 54332 },
-                new SimpleImageVM() { id = 2, name = "t2.jpg", type = "image/jpeg", size = 66446 },
-                new SimpleImageVM() { id = 3, name = "t3.jpg", type = "image/jpeg", size = 11245 }
+                new SimpleImageVM() { id = 1, name = "001.jpg", type = "image/jpeg", size = 0 },
+                new SimpleImageVM() { id = 2, name = "002.jpg", type = "image/jpeg", size = 0 },
+                new SimpleImageVM() { id = 3, name = "003.jpg", type = "image/jpeg", size = 0 },
+                new SimpleImageVM() { id = 4, name = "004.jpg", type = "image/jpeg", size = 0 },
+                new SimpleImageVM() { id = 5, name = "005.jpg", type = "image/jpeg", size = 0 },
+                new SimpleImageVM() { id = 6, name = "006.jpg", type = "image/jpeg", size = 0 },
+                new SimpleImageVM() { id = 7, name = "007.jpg", type = "image/jpeg", size = 0 },
+                new SimpleImageVM() { id = 8, name = "008.png", type = "image/jpeg", size = 0 }
             }, JsonRequestBehavior.AllowGet);
         }
 

@@ -9,21 +9,7 @@
         };
 
         return pub;
-
     }());
-
-    function GetImages() {
-        return [
-            "http://localhost:58868/Uploads/001.jpg",
-            "http://localhost:58868/Uploads/002.jpg",
-            "http://localhost:58868/Uploads/003.jpg",
-            "http://localhost:58868/Uploads/004.jpg",
-            "http://localhost:58868/Uploads/005.jpg",
-            "http://localhost:58868/Uploads/006.jpg",
-            "http://localhost:58868/Uploads/007.jpg",
-            "http://localhost:58868/Uploads/008.png",
-        ];
-    }
 
     angular.element(document).ready(function () {
 
@@ -32,24 +18,45 @@
             itemSelector: '.grid-item'
         });
 
-        var images = GetImages();
-        for (var i = 0; i < images.length; i++) {
-            var div = document.createElement("div");
-            div.setAttribute("class", "grid-item");
-            var img = document.createElement("img");
-            img.setAttribute("src", images[i]);
-            img.setAttribute("alt", "image");
-            div.appendChild(img);
+        GetImageList($localStorage.user.id, function (response) {
 
-            $grid.masonry()
-                .append(div)
-                .masonry('appended', div)
-                .masonry();
-        }
+            if (!response.data)
+                return;
 
-        $grid.imagesLoaded().progress(function () {
-            $grid.masonry('layout');
+            var images = response.data;
+            var pageUrl = "http://localhost:58868/Uploads/";
+
+            for (var i = 0; i < images.length; i++) {
+                var div = document.createElement("div");
+                div.setAttribute("class", "grid-item");
+                var img = document.createElement("img");
+                img.setAttribute("src", pageUrl + images[i].name);
+                img.setAttribute("alt", "image");
+                div.appendChild(img);
+
+                $grid.masonry()
+                    .append(div)
+                    .masonry('appended', div)
+                    .masonry();
+            }
+
+            $grid.imagesLoaded().progress(function () {
+                $grid.masonry('layout');
+            });
+
         });
+
     });
+
+    function GetImageList(userId, callback) {
+        $http({
+            method: 'GET',
+            url: '/Manage/GetImageList?userId=' + userId
+        }).then(function successCallback(response) {
+            callback(response);
+        }, function errorCallback(response) {
+            console.error(response.data);
+        });
+    }
 
 }]);
