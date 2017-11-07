@@ -1,4 +1,4 @@
-﻿app.controller('HomeController', ['$scope', '$localStorage', function ($scope, $localStorage) {
+﻿app.controller('HomeController', ['$scope', '$http', '$localStorage', function ($scope, $http, $localStorage) {
     
     $scope.homeWrap = (function () {
 
@@ -9,14 +9,14 @@
                 browse: true,
                 logout: true,
                 manage: true
-            }
+            },
+            store: null
         };
 
-        var _this;
-
         pub.Init = function () {
-            //this.SetRouteProgram(GetRouteFromUrl(window.location.href));
-            _this = this;
+            console.log("Home run.");
+            $scope.homeWrap.store = $localStorage;
+            console.log($scope.homeWrap.store);
         };
 
         pub.SetRouteProgram = function (url) {
@@ -24,50 +24,130 @@
             ShowHideMenus(GetRouteFromUrl(url));
         };
 
-        pub.Logout = function () {
-            $localStorage.$reset();
-            location.href = "#/Login";
+        pub.LogoutUser = function () {
+            if ($localStorage.loginType == "facebook") {
+                $scope.fb.get.logout(function (response) {
+                    UnsetUserSession($localStorage);
+                    location.href = "#/Login";
+                });
+            } else {
+                UnsetUserSession($localStorage);
+                location.href = "#/Login";
+            }
         };
 
         function ShowHideMenus(routeName) {
-            if (!_this) {
-                console.error("Init failure");
-                return;
-            }
             switch (routeName) {
                 case "Login":
-                    _this.pageBits.login = false;
-                    _this.pageBits.manage = false;
-                    _this.pageBits.browse = false;
-                    _this.pageBits.logout = false;
+                    $scope.homeWrap.pageBits.login = false;
+                    $scope.homeWrap.pageBits.manage = false;
+                    $scope.homeWrap.pageBits.browse = false;
+                    $scope.homeWrap.pageBits.logout = false;
                     break;
                 case "Register":
-                    _this.pageBits.login = true;
-                    _this.pageBits.manage = false;
-                    _this.pageBits.browse = false;
-                    _this.pageBits.logout = false;
+                    $scope.homeWrap.pageBits.login = true;
+                    $scope.homeWrap.pageBits.manage = false;
+                    $scope.homeWrap.pageBits.browse = false;
+                    $scope.homeWrap.pageBits.logout = false;
                     break;
                 case "Manage":
-                    _this.pageBits.login = false;
-                    _this.pageBits.manage = false;
-                    _this.pageBits.browse = true;
-                    _this.pageBits.logout = true;
+                    $scope.homeWrap.pageBits.login = false;
+                    $scope.homeWrap.pageBits.manage = false;
+                    $scope.homeWrap.pageBits.browse = true;
+                    $scope.homeWrap.pageBits.logout = true;
                     break;
                 case "Browse":
-                    _this.pageBits.login = false;
-                    _this.pageBits.manage = true;
-                    _this.pageBits.browse = false;
-                    _this.pageBits.logout = true;
+                    $scope.homeWrap.pageBits.login = false;
+                    $scope.homeWrap.pageBits.manage = true;
+                    $scope.homeWrap.pageBits.browse = false;
+                    $scope.homeWrap.pageBits.logout = true;
                     break;
                 case "ImageView":
-                    _this.pageBits.login = false;
-                    _this.pageBits.manage = true;
-                    _this.pageBits.browse = true;
-                    _this.pageBits.logout = true;
+                    $scope.homeWrap.pageBits.login = false;
+                    $scope.homeWrap.pageBits.manage = true;
+                    $scope.homeWrap.pageBits.browse = true;
+                    $scope.homeWrap.pageBits.logout = true;
                     break;
                 default:
             }
         }
+        
+        return pub;
+
+    }());
+
+    $scope.fb = (function () {
+
+        var pub = {
+            get: null
+        };
+
+        pub.Init = function (callback) {
+            window.fbAsyncInit = function () {
+
+                FB.init({
+                    appId: '179104586001290',
+                    cookie: true,
+                    xfbml: true,
+                    version: 'v2.10'
+                });
+
+                FB.AppEvents.logPageView();
+
+                $scope.fb.get = FB;
+
+                callback();
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        };
+
+        pub.CheckLoginState = function (callback) {
+            $scope.fb.get.getLoginStatus(function (response) {
+
+                if (response.status == "connected") {
+
+                    FB.api('/me', {
+                        locale: 'tr_TR',
+                        fields: 'name,email,birthday,hometown,education,gender,website,work'
+                    }, function (response) {
+
+                        console.log(response);
+                        callback(response);
+                    }
+                    );
+
+                } else {
+                    console.log("Logged Out");
+                    callback(false);
+                }
+            });
+        };
+
+        pub.Login = function (callback) {
+            $scope.fb.get.login(function (response) {
+                if (response.status == "connected") {
+
+                    FB.api('/me', {
+                        locale: 'tr_TR',
+                        fields: 'name,email,birthday,hometown,education,gender,website,work'
+                    }, function (response) {
+                        console.log(response);
+                        callback(response);
+                    });
+
+                } else {
+                    console.log("Logged Out");
+                    callback(false);
+                }
+            });
+        };
 
         return pub;
 

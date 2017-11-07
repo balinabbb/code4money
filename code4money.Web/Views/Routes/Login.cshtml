@@ -15,14 +15,14 @@
             <div class="shadow-box mb10">
                 <div class="mb10">
                     <input type="text" name="email" class="form-control" placeholder="E-mail..."
-                           ng-model="wrap.user.email"
+                           ng-model="wrap.userInput.email"
                            ng-keypress="InputEvent($event, wrap.LoginUser)" />
                     <p class="help-block"
                        ng-show="LoginForm.email.$error.isEmpty">Üres mező!</p>
                 </div>
                 <div>
                     <input type="password" name="password" class="form-control" placeholder="Password..."
-                           ng-model="wrap.user.password"
+                           ng-model="wrap.userInput.password"
                            ng-keypress="InputEvent($event, wrap.LoginUser)" />
                     <p class="help-block"
                        ng-show="LoginForm.password.$error.isEmpty">Üres mező!</p>
@@ -33,7 +33,13 @@
                      ng-click="wrap.LoginUser()"><span>Login</span></div>
             </div>
             <div class="shadow-box">
-                <div class="tmpFacebookBtn">Facebook</div>
+                <div class="tmpFacebookBtn cursor-pointer" ng-click="wrap.FacebookLoginUser()">
+                    <span class="logo">f</span>
+                    <span>Login with Facebook</span>
+                </div>
+                @*<fb:login-button scope="public_profile,email"
+                                 onlogin="FBWrap.CheckLoginState();">
+                </fb:login-button>*@
             </div>
         </div>
         <p class="text-right">

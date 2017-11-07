@@ -11,7 +11,6 @@
         };
 
         pub.Init = function () {
-            console.log("LoginController Init");
         };
 
         pub.RegisterUser = function () {
@@ -19,9 +18,14 @@
                 return;
 
             RegisterUser($scope.wrap.user, function (response) {
-                if (response.data === true)
+                if (response.data === true) {
+                    SetUserSession(
+                        $localStorage,
+                        new User(-1, "from@reg.com", ""),
+                        "custom"
+                    );
                     location.href = "#/Browse";
-                else
+                } else
                     console.error("Hibás regisztráció!");
             });
 

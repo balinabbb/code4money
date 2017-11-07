@@ -36,13 +36,14 @@
                 </a>
                 <div class="collapse navbar-collapse mr20" id="navbarTogglerDemo02">
                     <ul class="nav navbar-nav navbar-right">
+                        <li ng-show="homeWrap.store.user"><span class="padd15 block lightgray"><font class="grayish">Logged in as</font> {{homeWrap.store.user.email}}</span></li>
                         <li ng-if="homeWrap.pageBits.login"><a href="#/Login">Login</a></li>
                         @*<li><a href="#/Register">Register</a></li>*@
                         <li ng-if="homeWrap.pageBits.manage"><a href="#/Manage">Manage</a></li>
                         <li ng-if="homeWrap.pageBits.browse"><a href="#/Browse">Browse</a></li>
                         @*<li><a href="#/ImageView/6">ImageView</a></li>*@
                         <li ng-if="homeWrap.pageBits.logout" 
-                            ng-click="homeWrap.Logout()"><a href="#">Logout</a></li>
+                            ng-click="homeWrap.LogoutUser()"><a href="#">Logout</a></li>
                     </ul>
                 </div>
             </nav>

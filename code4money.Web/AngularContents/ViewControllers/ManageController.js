@@ -1,20 +1,17 @@
 ﻿app.controller('ManageController', ['$scope', '$http', 'FileUploader', '$localStorage', function ($scope, $http, FileUploader, $localStorage) {
 
-    // TODO after upload (response success), wait 5 sec then remove file from queue and add to uploaded image
+    // TODO after image upload (response success), wait 5 sec then remove file from queue and add to uploaded image
     
     $scope.wrap = (function () {
-
-        // Public properties
+        
         var pub = {
             uploader: null,
             uploadedImageList: []
         };
-
-        // Private properties
+        
         var _this;
         var uploader;
-
-        // Public methods
+        
         pub.Init = function () {
 
             CheckUserSession($localStorage.user);
@@ -89,8 +86,7 @@
                     RemoveFromUploadedImageList(item);
             });
         };
-
-        // Private methods
+        
         function RemoveFromUploadedImageList(item) {
             var i = _this.uploadedImageList.indexOf(item);
             if (i > -1) {

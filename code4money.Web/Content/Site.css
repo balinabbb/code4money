@@ -288,10 +288,18 @@ footer {
  * Elements
  */
 .tmpFacebookBtn {
-    padding: 10px 15px;
     color: #fff;
     background: #4267b2;
 }
+    .tmpFacebookBtn span {
+        display: inline-block;
+        padding: 11px;
+    }
+    .tmpFacebookBtn .logo {
+        border-right: 1px solid #ddd;
+        padding: 11px 15px;
+        font-weight:bold;
+    }
 .c4mlogo {
     font-family: 'Courier New';
     font-size: 22px;
