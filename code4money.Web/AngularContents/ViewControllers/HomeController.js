@@ -16,7 +16,17 @@
         pub.Init = function () {
             console.log("Home run.");
             $scope.homeWrap.store = $localStorage;
-            console.log($scope.homeWrap.store);
+
+            $scope.loading = true;
+
+            // Init facebook
+            if (!$scope.fb.get) {
+                $scope.fb.Init(function () {
+                    $scope.loading = false;
+                });
+            } else {
+                $scope.loading = false;
+            }
         };
 
         pub.SetRouteProgram = function (url) {
@@ -26,10 +36,20 @@
 
         pub.LogoutUser = function () {
             if ($localStorage.loginType == "facebook") {
-                $scope.fb.get.logout(function (response) {
-                    UnsetUserSession($localStorage);
-                    location.href = "#/Login";
+
+                $scope.fb.CheckLoginState(function (response) {
+                    if (response.status == "connected") {
+                        $scope.fb.get.logout(function (response) {
+                            UnsetUserSession($localStorage);
+                            location.href = "#/Login";
+                        });
+                    } else {
+                        UnsetUserSession($localStorage);
+                        location.href = "#/Login";
+                    }
                 });
+
+                
             } else {
                 UnsetUserSession($localStorage);
                 location.href = "#/Login";
@@ -68,6 +88,12 @@
                     $scope.homeWrap.pageBits.browse = true;
                     $scope.homeWrap.pageBits.logout = true;
                     break;
+                case "Profile":
+                    $scope.homeWrap.pageBits.login = false;
+                    $scope.homeWrap.pageBits.manage = true;
+                    $scope.homeWrap.pageBits.browse = true;
+                    $scope.homeWrap.pageBits.logout = true;
+                    break;
                 default:
             }
         }
@@ -83,6 +109,15 @@
         };
 
         pub.Init = function (callback) {
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
             window.fbAsyncInit = function () {
 
                 FB.init({
@@ -98,14 +133,6 @@
 
                 callback();
             };
-
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) { return; }
-                js = d.createElement(s); js.id = id;
-                js.src = "https://connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
         };
 
         pub.CheckLoginState = function (callback) {
@@ -125,7 +152,7 @@
 
                 } else {
                     console.log("Logged Out");
-                    callback(false);
+                    callback(response);
                 }
             });
         };
@@ -173,7 +200,7 @@
     });
 
     $scope.$watch('$localStorage', function (a, b, c) {
-        console.log($localStorage);
+        //console.log($localStorage);
     });
 
 }]);

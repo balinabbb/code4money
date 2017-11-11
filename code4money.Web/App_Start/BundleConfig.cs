@@ -41,15 +41,10 @@ namespace code4money.Web
                 "~/AngularContents/app.js",
                 "~/AngularContents/routeconfig.js",
                 // views
-                "~/AngularContents/ViewControllers/HomeController.js",
-                "~/AngularContents/ViewControllers/BrowseController.js",
-                "~/AngularContents/ViewControllers/ImageViewController.js",
-                "~/AngularContents/ViewControllers/LoginController.js",
-                "~/AngularContents/ViewControllers/ManageController.js",
-                "~/AngularContents/ViewControllers/RegisterController.js",
+                "~/AngularContents/ViewControllers/*.js"
+                ).IncludeDirectory(
                 // modules
-                "~/AngularContents/Modules/Test/TestController.js",
-                "~/AngularContents/Modules/Test/TestDirective.js"
+                "~/AngularContents/Modules/", "*.js", true
                 ));
         }
     }

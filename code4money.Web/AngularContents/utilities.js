@@ -1,4 +1,14 @@
-﻿/**
+﻿
+/**
+ * Gets session user.
+ * @param {sessionStorage} $localStorage
+ * @returns {User}
+ */
+function GetSessionUser($localStorage) {
+    return $localStorage.user;
+}
+
+/**
  * Sets $localStorage.user to user: User
  * @param {User} user
  * @param {string} loginType

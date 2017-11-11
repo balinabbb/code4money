@@ -8,27 +8,32 @@ namespace code4money.Web.Controllers
 {
     public class RoutesController: Controller
     {
-        public ActionResult Login()
+        public ActionResult LoginPage()
         {
             return View();
         }
 
-        public ActionResult Register()
+        public ActionResult RegisterPage()
         {
             return View();
         }
 
-        public ActionResult Manage()
+        public ActionResult ManagePage()
         {
             return View();
         }
 
-        public ActionResult Browse()
+        public ActionResult BrowsePage()
         {
             return View();
         }
 
-        public ActionResult ImageView()
+        public ActionResult ImageViewPage()
+        {
+            return View();
+        }
+
+        public ActionResult ProfilePage()
         {
             return View();
         }

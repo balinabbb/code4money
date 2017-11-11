@@ -218,6 +218,7 @@
     <Content Include="AngularContents\ViewControllers\ImageViewController.js" />
     <Content Include="AngularContents\ViewControllers\LoginController.js" />
     <Content Include="AngularContents\ViewControllers\ManageController.js" />
+    <Content Include="AngularContents\ViewControllers\ProfileController.js" />
     <Content Include="AngularContents\ViewControllers\RegisterController.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -313,17 +314,18 @@
     <Content Include="Scripts\ngStorage\LICENSE" />
     <Content Include="Scripts\ngStorage\package.json" />
     <Content Include="Scripts\ngStorage\README.md" />
+    <Content Include="Views\Routes\ProfilePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Views\Routes\Login.cshtml" />
-    <Content Include="Views\Routes\Register.cshtml" />
-    <Content Include="Views\Routes\Manage.cshtml" />
-    <Content Include="Views\Routes\Browse.cshtml" />
-    <Content Include="Views\Routes\ImageView.cshtml" />
+    <Content Include="Views\Routes\LoginPage.cshtml" />
+    <Content Include="Views\Routes\RegisterPage.cshtml" />
+    <Content Include="Views\Routes\ManagePage.cshtml" />
+    <Content Include="Views\Routes\BrowsePage.cshtml" />
+    <Content Include="Views\Routes\ImageViewPage.cshtml" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />

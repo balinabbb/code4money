@@ -1,0 +1,9 @@
+﻿<div ng-init="page.Init()">
+    <h2>Your user info</h2>
+    <p>
+        <strong>Username: </strong>
+        <span ng-show="page.user.name">{{page.user.name}}</span>
+        <span ng-show="!page.user.name" class="text-muted">unset</span>
+    </p>
+    <p><strong>E-mail: </strong>{{page.user.email}}</p>
+</div>

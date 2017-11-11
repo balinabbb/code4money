@@ -20,9 +20,13 @@
             $scope.loading = true;
 
             // Init facebook button
-            $scope.fb.Init(function () {
+            if (!$scope.fb.get) {
+                $scope.fb.Init(function () {
+                    $scope.loading = false;
+                });
+            } else {
                 $scope.loading = false;
-            });
+            }
         };
 
         pub.FacebookLoginUser = function () {

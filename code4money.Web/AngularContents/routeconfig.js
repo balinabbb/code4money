@@ -2,28 +2,33 @@
 
     $routeProvider
         .when('/Login', {
-            templateUrl: '/Routes/Login',
+            templateUrl: '/Routes/LoginPage',
             controller: 'LoginController'
         })
         .when('/Register', {
-            templateUrl: '/Routes/Register',
+            templateUrl: '/Routes/RegisterPage',
             controller: 'RegisterController'
         })
         .when('/Manage', {
-            templateUrl: '/Routes/Manage',
+            templateUrl: '/Routes/ManagePage',
             controller: 'ManageController'
         })
         .when('/Browse', {
-            templateUrl: '/Routes/Browse',
+            templateUrl: '/Routes/BrowsePage',
             controller: 'BrowseController'
         })
         .when('/ImageView/:taxomony', {
             templateUrl: function (params) {
-                return '/Routes/ImageView?taxomony=' + params.taxomony;
+                return '/Routes/ImageViewPage?taxomony=' + params.taxomony;
             },
             controller: 'ImageViewController'
-        }).otherwise('/Login', {
-            templateUrl: '/Routes/Login',
+        })
+        .when('/Profile', {
+            templateUrl: '/Routes/ProfilePage',
+            controller: 'ProfileController'
+        })
+        .otherwise('/Login', {
+            templateUrl: '/Routes/LoginPage',
             controller: 'LoginController'
         });
 
