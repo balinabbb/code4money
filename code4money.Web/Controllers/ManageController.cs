@@ -16,7 +16,7 @@ namespace code4money.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetImageList(int userId)
+        public ActionResult GetImageList(string userId)
         {
             return Json(new List<SimpleImageVM>() {
                 new SimpleImageVM() { id = 1, name = "001.jpg", type = "image/jpeg", size = 0 },
