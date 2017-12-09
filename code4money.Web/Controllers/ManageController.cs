@@ -1,6 +1,7 @@
 ﻿using code4money.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +13,16 @@ namespace code4money.Web.Controllers
         [HttpPost]
         public ActionResult UploadImages()
         {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Uploads/"), fileName);
+                    file.SaveAs(path);
+                }
+            }
             return Json(true);
         }
 

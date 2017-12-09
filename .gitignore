@@ -236,3 +236,5 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 /code4money.Web/Docs
+/code4money.Web/Images
+/code4money.Web/Uploads

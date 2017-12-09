@@ -24,7 +24,7 @@
             });
 
             // get images
-            GetImageList(10, function (response) {
+            GetImageList(-1, function (response) {
 
                 _this.uploadedImageList = response.data;
 
