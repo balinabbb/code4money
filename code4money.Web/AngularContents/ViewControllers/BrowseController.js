@@ -24,7 +24,7 @@
                 return;
 
             var images = response.data;
-            var pageUrl = "http://localhost:58868/Uploads/";
+            var pageUrl = "/Uploads/";
 
             for (var i = 0; i < images.length; i++) {
                 var div = document.createElement("div");

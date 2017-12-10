@@ -18,12 +18,9 @@
             GetAlbumData(-1, function (response) {
                 $scope.wrap.albums = response.data;
             });
-
-            _this.OpenAlbum(-1);
         };
 
         pub.OpenAlbum = function (album) {
-            console.log("ar");
             $scope.openedAlbum = $scope.wrap.albums[0]; // TODO get selected album
             $mdDialog.show({
                 templateUrl: 'AngularContents/Modules/FileUpload/FileUpload.html',

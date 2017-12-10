@@ -21,13 +21,14 @@ namespace code4money.Web.Controllers
                     var fileName = Path.GetFileName(file.FileName);
                     var path = Path.Combine(Server.MapPath("~/Uploads/"), fileName);
                     file.SaveAs(path);
+                    return Json(true);
                 }
             }
-            return Json(true);
+            return Json(false);
         }
 
         [HttpGet]
-        public ActionResult GetImageList(int userId)
+        public ActionResult GetImageList(string userId)
         {
             return Json(new List<SimpleImageVM>() {
                 new SimpleImageVM() { id = 1, name = "001.jpg", type = "image/jpeg", size = 0 },

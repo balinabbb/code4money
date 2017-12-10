@@ -16,8 +16,6 @@
 
         pub.Init = function () {
 
-            console.log("here");
-
             //CheckUserSession($localStorage.user);
 
             _this = this;
