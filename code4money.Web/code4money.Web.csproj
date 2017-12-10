@@ -208,6 +208,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularContents\app.js" />
+    <Content Include="AngularContents\Modules\FileUpload\FileUpload.html" />
+    <Content Include="AngularContents\Modules\FileUpload\FileUploadController.js" />
     <Content Include="AngularContents\Modules\Test\Test.html" />
     <Content Include="AngularContents\Modules\Test\TestController.js" />
     <Content Include="AngularContents\Modules\Test\TestDirective.js" />
@@ -220,6 +222,7 @@
     <Content Include="AngularContents\ViewControllers\ManageController.js" />
     <Content Include="AngularContents\ViewControllers\ProfileController.js" />
     <Content Include="AngularContents\ViewControllers\RegisterController.js" />
+    <Content Include="Content\angular-material.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -232,7 +235,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\icons\close24px.svg" />
     <Content Include="Images\logo.png" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-aria.min.js" />
     <Content Include="Scripts\angular-file-upload\.gitignore" />
     <Content Include="Scripts\angular-file-upload\dist\angular-file-upload.js" />
     <Content Include="Scripts\angular-file-upload\dist\angular-file-upload.min.js" />
@@ -252,13 +258,15 @@
     <Content Include="Scripts\angular-file-upload\src\services\Pipeline.js" />
     <Content Include="Scripts\angular-file-upload\src\values\options.js" />
     <Content Include="Scripts\angular-file-upload\WebpackConfig.js" />
+    <Content Include="Scripts\angular-material.min.js" />
+    <Content Include="Scripts\angular-messages.min.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\imagesloaded.pknd.min.js" />
     <Content Include="Scripts\masonry.pkgd.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

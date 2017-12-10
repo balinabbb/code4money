@@ -1,0 +1,142 @@
+﻿<md-dialog aria-label="Album" ng-init="FUCWrap.Init()">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Album: {{openedAlbum.title}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="FUCWrap.Close()">
+                    <md-icon md-svg-src="/Images/icons/close24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+
+            <div class="md-dialog-content">
+                
+                <div class="col-md-12 padd5">
+                    <div class="shadow-box">
+                        <div class="fl-upr" ng-show="FUCWrap.uploader.isHTML5">
+                            <div nv-file-drop="" uploader="FUCWrap.uploader" options="{ url: '/foo' }">
+                                <div class="well fl-dz uns" nv-file-over="" uploader="FUCWrap.uploader" over-class="another-file-over-class">
+                                    Drag and drop your pictures here
+                                </div>
+                            </div>
+                        </div>
+                        <input type="file" nv-file-select="" uploader="FUCWrap.uploader" multiple /><br />
+                    </div>
+                </div>
+
+                <div class="col-md-8 padd5">
+                    <div class="shadow-box">
+
+                        <h3>Upload queue <span ng-show="FUCWrap.uploader.queue.length > 0">({{ FUCWrap.uploader.queue.length }})</span></h3>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Name</th>
+                                    <th ng-show="FUCWrap.uploader.isHTML5">Size</th>
+                                    <th ng-show="FUCWrap.uploader.isHTML5">Progress</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-show="FUCWrap.uploader.queue.length == 0">
+                                    <td colspan="5"><p>No images in queue.</p></td>
+                                </tr>
+                                <tr ng-repeat="item in FUCWrap.uploader.queue">
+                                    <td><strong>{{ item.file.name }}</strong></td>
+                                    <td ng-show="FUCWrap.uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                    <td ng-show="FUCWrap.uploader.isHTML5">
+                                        <div class="progress" style="margin-bottom: 0;">
+                                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                        <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                        <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                    </td>
+                                    <td nowrap>
+                                        <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                            <span class="glyphicon glyphicon-upload"></span> Upload
+                                        </button>
+                                        <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-show="item.isUploading">
+                                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                            <span class="glyphicon glyphicon-trash"></span> Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div ng-show="FUCWrap.uploader.queue.length > 0">
+                            <div class="progress" style="" title="Queue progress">
+                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': FUCWrap.uploader.progress + '%' }"></div>
+                            </div>
+                            <button type="button" class="btn btn-success btn-s" ng-click="FUCWrap.uploader.uploadAll()" ng-disabled="!FUCWrap.uploader.getNotUploadedItems().length">
+                                <span class="glyphicon glyphicon-upload"></span> Upload all
+                            </button>
+                            <button type="button" class="btn btn-warning btn-s" ng-click="FUCWrap.uploader.cancelAll()" ng-disabled="!FUCWrap.uploader.isUploading">
+                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                            </button>
+                            <button type="button" class="btn btn-danger btn-s" ng-click="FUCWrap.uploader.clearQueue()" ng-disabled="!FUCWrap.uploader.queue.length">
+                                <span class="glyphicon glyphicon-trash"></span> Remove all
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4 padd5">
+                    <div class="shadow-box">
+
+                        <h3>Uploaded images</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Name</th>
+                                    <th>Size</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-show="FUCWrap.uploadedImageList.queue.length == 0">
+                                    <td colspan="5"><p>No images in queue.</p></td>
+                                </tr>
+                                <tr ng-repeat="item in FUCWrap.uploadedImageList">
+                                    <td><strong>{{ item.name }}</strong></td>
+                                    <td nowrap>{{ item.size/1024/1024|number:2 }} MB</td>
+                                    <td class="text-center">
+                                        <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                        <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                        <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                    </td>
+                                    <td nowrap>
+                                        <button type="button" class="btn btn-danger btn-xs" ng-click="FUCWrap.DeleteImage(item)">
+                                            <span class="glyphicon glyphicon-trash"></span> Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="FUCWrap.Close()">
+                OK
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

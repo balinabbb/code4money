@@ -11,6 +11,7 @@ namespace code4money.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.min.css",
                 "~/Content/bootstrap-theme.min.css",
+                "~/Content/angular-material.min.css",
                 "~/Content/Site.css"
                 ));
 
@@ -23,6 +24,13 @@ namespace code4money.Web
                 "~/Scripts/angular.min.js",
                 "~/Scripts/angular-route.min.js",
                 "~/Scripts/angular-mocks.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularMaterial").Include(
+                "~/Scripts/angular-animate.min.js",
+                "~/Scripts/angular-aria.min.js",
+                "~/Scripts/angular-messages.min.js",
+                "~/Scripts/angular-material.min.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/angularModules").Include(
