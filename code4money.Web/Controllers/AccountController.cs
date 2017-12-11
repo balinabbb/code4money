@@ -102,9 +102,13 @@ namespace code4money.Web.Controllers
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ctx));
 
                 var user = await manager.FindByEmailAsync(vm.email);
+                if (user == null)
+                {
+                    return new HttpStatusCodeResult(400, "No user found with the given credentials");
+                }
                 try
                 {
                     await HttpContext.GetOwinContext().Get<ApplicationSignInManager>().PasswordSignInAsync(vm.email, vm.password, false, false);
