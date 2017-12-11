@@ -110,21 +110,13 @@
 
         pub.Init = function (callback) {
 
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) { return; }
-                js = d.createElement(s); js.id = id;
-                js.src = "https://connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-
             window.fbAsyncInit = function () {
 
                 FB.init({
-                    appId: '179104586001290',
+                    appId: '155273308418309',
                     cookie: true,
                     xfbml: true,
-                    version: 'v2.10'
+                    version: 'v2.11'
                 });
 
                 FB.AppEvents.logPageView();
@@ -133,6 +125,14 @@
 
                 callback();
             };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
         };
 
         pub.CheckLoginState = function (callback) {

@@ -57,11 +57,15 @@ namespace code4money.Web.Controllers
             var result = await manager.CreateAsync(user);
             if (result.Succeeded)
             {
-                //result = await manager.AddLoginAsync(user.Id, new UserLoginInfo("Facebook", "155273308418309"));
-                //if (result.Succeeded)
-                //{
-
-                //}
+                result = await manager.AddLoginAsync(user.Id, new UserLoginInfo("Facebook", "155273308418309"));
+                if (result.Succeeded)
+                {
+                    return Json(new
+                    {
+                        id = user.Id,
+                        email = user.Email
+                    });
+                }
             }
             return Json(new
             {
