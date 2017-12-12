@@ -15,7 +15,7 @@
 
             _this = this;
 
-            GetAlbumData(-1, function (response) {
+            GetAlbumData($localStorage.user.id, function (response) {
                 $scope.wrap.albums = response.data;
             });
         };

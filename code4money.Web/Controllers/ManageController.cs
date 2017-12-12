@@ -1,14 +1,17 @@
 ﻿using code4money.Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace code4money.Web.Controllers
 {
-    public class ManageController: Controller
+    public class ManageController : Controller
     {
         [HttpPost]
         public ActionResult UploadImages()
@@ -21,6 +24,30 @@ namespace code4money.Web.Controllers
                     var fileName = Path.GetFileName(file.FileName);
                     var path = Path.Combine(Server.MapPath("~/Uploads/"), fileName);
                     file.SaveAs(path);
+
+                    using (var ctx = new ApplicationDbContext())
+                    {
+                        var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ctx));
+
+                        var user = manager.FindByEmail(HttpContext.User.Identity.Name);
+                        if (user == null)
+                        {
+                            return new HttpStatusCodeResult(400, "No user found with the given name");
+                        }
+
+                        var imageUpload = new ImageUpload()
+                        {
+                            ApplicationUser = user,
+                            ApplicationUserId = user.Id,
+                            ImageUrl = fileName,
+                            TimeStamp = DateTime.UtcNow
+                        };
+
+                        user.ImageUploads.Add(imageUpload);
+
+                        ctx.SaveChanges();
+                    }
+
                     return Json(true);
                 }
             }
@@ -30,16 +57,40 @@ namespace code4money.Web.Controllers
         [HttpGet]
         public ActionResult GetImageList(string userId)
         {
-            return Json(new List<SimpleImageVM>() {
-                new SimpleImageVM() { id = 1, name = "001.jpg", type = "image/jpeg", size = 0 },
-                new SimpleImageVM() { id = 2, name = "002.jpg", type = "image/jpeg", size = 0 },
-                new SimpleImageVM() { id = 3, name = "003.jpg", type = "image/jpeg", size = 0 },
-                new SimpleImageVM() { id = 4, name = "004.jpg", type = "image/jpeg", size = 0 },
-                new SimpleImageVM() { id = 5, name = "005.jpg", type = "image/jpeg", size = 0 },
-                new SimpleImageVM() { id = 6, name = "006.jpg", type = "image/jpeg", size = 0 },
-                new SimpleImageVM() { id = 7, name = "007.jpg", type = "image/jpeg", size = 0 },
-                new SimpleImageVM() { id = 8, name = "008.png", type = "image/jpeg", size = 0 }
-            }, JsonRequestBehavior.AllowGet);
+            using (var ctx = new ApplicationDbContext())
+            {
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ctx));
+
+                var user = manager.FindById(userId);
+                if (user == null)
+                {
+                    return new HttpStatusCodeResult(400, "No user found with the given name");
+                }
+
+                var imageFolder = Server.MapPath("~/Uploads/");
+
+                var images =
+                    ctx
+                        .ImageUploads
+                        .Where(image => image.ApplicationUserId == userId)
+                        .ToList()
+                        .Select(image =>
+                        {
+                            var filePath = Path.Combine(imageFolder, image.ImageUrl);
+                            var fileInfo = new FileInfo(filePath);
+
+                            return new SimpleImageVM()
+                            {
+                                id = image.Id,
+                                name = image.ImageUrl,
+                                type = "image/jpeg",
+                                size = (int)fileInfo.Length
+                            };
+                        })
+                        .ToList();
+
+                return Json(images, JsonRequestBehavior.AllowGet);
+            }
         }
 
         [HttpPost]
