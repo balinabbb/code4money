@@ -12,6 +12,8 @@ namespace code4money.Web.Models
         {
         }
 
+        public virtual DbSet<ImageUpload> ImageUploads { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

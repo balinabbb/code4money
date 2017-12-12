@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -122,6 +123,9 @@ namespace code4money.Web.Controllers
                     Console.WriteLine(e);
                     return new HttpStatusCodeResult(400);
                 }
+
+                HttpContext.User = new GenericPrincipal(new GenericIdentity(user.Email), roles: new string[] { });
+
                 return Json(new SimpleUserVM
                 {
                     email = user.Email,

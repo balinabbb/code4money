@@ -9,7 +9,8 @@ namespace code4money.Web.Models
     public class ApplicationUser : IdentityUser
     {
         public System.DateTime? BirthDate { get; set; }
-        public ICollection<ImageUpload> ImageUploads { get; set; }
+
+        public ICollection<ImageUpload> ImageUploads { get; set; } = new List<ImageUpload>();
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
